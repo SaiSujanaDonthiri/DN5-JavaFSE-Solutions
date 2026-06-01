@@ -1,0 +1,13 @@
+body{
+    font-family: Arial;
+    padding: 20px;
+}
+.eventCard{
+    border: 2px solid black;
+    padding: 15px;
+    margin: 10px;
+}
+#loading{
+    display: none;
+    color: red;
+}

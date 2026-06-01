@@ -1,0 +1,122 @@
+/* Universal Selector */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Body Styles */
+body{
+    font-family: Arial, sans-serif;
+    background-image: url("background.jpg");
+    background-color: #f0f0f0;
+    background-size: cover;
+    padding: 20px;
+}
+/* Navigation Styles */
+nav ul{
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 0;
+}
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+    padding: 10px;
+}
+/* Link Styles */
+a:link{
+    color: blue;
+}
+a:hover{
+    color: red;
+}
+a:active{
+    color: green;
+}
+a:visited{
+    color: purple;
+}
+/* Main Header */
+#mainHeader{
+    background: linear-gradient(to right, blue, skyblue);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+/* Event Card */
+.eventCard{
+    border: 2px solid black;
+    padding: 20px;
+    margin: 20px 0;
+    outline: 2px dashed gray;
+    background-color: rgba(0,0,255,0.1);
+}
+/* Element Selector */
+h2{
+    color: #FF5733;
+    font-size: 28px;
+}
+/* Grouping Selector */
+h3, p{
+    color: darkblue;
+    line-height: 1.8;
+    letter-spacing: 1px;
+}
+/* Typography */
+p{
+    text-align: justify;
+    text-transform: capitalize;
+    font-style: italic;
+    font-weight: bold;
+}
+/* Table Styles */
+table{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 20px;
+}
+th, td{
+    border: 1px solid black;
+    padding: 10px;
+    background-color: #dddddd;
+}
+/* Zebra Striping */
+tr:nth-child(even){
+    background-color: lightblue;
+}
+/* Form */
+input:focus{
+    outline: 3px solid red;
+}
+/* Visibility */
+.hiddenBox{
+    visibility: hidden;
+}
+.noneBox{
+    display: none;
+}
+/* Multi Column Layout */
+.newsArticle{
+    column-count: 2;
+    column-gap: 30px;
+    column-rule: 1px solid gray;
+    margin-top: 20px;
+}
+/* Responsive Design */
+@media screen and (max-width:768px){
+    nav ul li{
+        display: block;
+        margin: 10px 0;
+    }
+    img{
+        width: 80%;
+    }
+    body{
+        font-size: 14px;
+    }
+    .eventCard{
+        width: 90%;
+    }
+}

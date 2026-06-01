@@ -1,0 +1,241 @@
+<!DOCTYPE html>             
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Local Community Event Portal</title>
+        <style>
+            #welcomeBanner{
+                background-color: blue;
+                color:white;
+                padding:10px;
+            }
+            .highlight{
+                background-color: yellow;
+                font-weight: bold;
+            }
+            .eventImage{
+                border:2px solid black;
+                width:150px;
+                height:100px
+            }
+            form{
+                border: 1px solid black;
+                padding:20px;
+                width:400px;
+            }
+        </style>
+</head>
+<body>
+    <!--Navigation-->
+<nav>
+    <a href="#home">Home</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact">Contact</a>
+    <a href="#help.html" target=""_blank>Help</a>
+</nav>
+    <!--Main-->
+<section id="home">
+<div id="welcomeBanner">
+    Welcome User
+    <span style="color:red; font-weight:bold;">
+    Special Offer!
+    </span>"
+</div>
+<p class="highlight">
+    Community Event Registration Open
+</p>
+</section>
+<section id="events">
+    <h2>Community Event Gallery</h2>
+    <table border="1">
+        <tr>
+            <td>
+                <img src="event1.jpg"
+                    alt="Music Event"
+                    title="Music Event"
+                    class="eventImage">
+                <p>Music Fest</p>
+            </td>
+            <td>
+                <img src="event2.jpg"
+                    alt="Food Event"
+                    title="Food Event"
+                    class="eventImage">
+                <p>Food Festival</p>
+            </td>
+            <td>
+                <img src="event3.jpg"
+                    alt="Sports Event"
+                    title="Specialports Event"
+                    class="eventImage">
+                <p>Sports Meet</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="event4.jpg"
+                    alt="Dance Event"
+                    title="Dance Event"
+                    class="eventImage">
+                <p>Dance Show</p>
+            </td>
+            <td>
+                <img src="event5.jpg"
+                    alt="Art Event"
+                    title="Art Event"
+                    class="eventImage">
+                <p>Art Expo</p>
+            </td>
+            <td>
+                <img src="event6.jpg"
+                    alt="Tech Event"
+                    title="Tech Event"
+                    class="eventImage">
+                <p>Tech Seminar</p>
+            </td>
+
+        </tr>
+    </table>
+</section>
+<section>
+    <h2>Event Registration Form</h2>
+    <form onsubmit="showMessage(); return false;">
+        <input type="text"
+            placeholder=""Enter Name"
+            required
+            autofocus>
+        <br><br>
+        <input type="email"
+            placeholder="Enter Email"
+            required>
+        <br><br>
+        <input type="text"
+            id="phone"
+            placeholder="Enter Phone Number"
+            onblur="validatePhone()">
+        <br><br>
+        <input type="date" required>
+        <br><br>
+        <select id="eventType"
+                oncharge="showFee(this.value)"
+                required>
+            <option value="">Select Event</option>
+            <option value="100">Music Event</option>
+            <option value="200">Sports Event</option>
+        </select>
+        <p id="fee"></p>
+        <textarea placeholder="Message"
+                  onkeyup="countChars(this)">
+        </textarea>
+        <p id="charCount"></p>
+        <br>
+        <button type="submit"
+                onclick="confirmSubmit()">
+                Register
+        </button>
+        <br><br>
+        <output id="result"></output>
+    </form>
+</section>
+<section>
+    <img src="event1.jpg"
+        width="200"
+        ondblclick="enlargeImage(this)">
+</section>
+<section>
+    <video width="400"
+        controls
+        oncanplay="videoReady(this)">
+        <source src="sample.mp4" type="video/mp4">
+    </video>
+    <p id="videoMessage"></p>
+</section>
+<section>
+    <button onClick="savePreference()">
+        Save Preferences
+    </button>
+    <button onClick="clearPreferences()">
+        Clear Preferences
+    </button>
+</section>
+<section>
+    <button onclick="findLocation()">
+        Find Nearby Events
+    </button>
+    <p id="location"></p>
+</section>
+<section id="contact">
+    <h2>Contact Section</h2>
+</section>
+ <!--Footer-->
+ <footer>
+    <p>Footer Section</p>
+ </footer>
+ <script>
+    function showMessage(){
+        document.getElementById("result").innerHTML="Registration Successful!";
+    }
+    function validatePhone(){
+        alert("Phone Validated");
+    }
+    function showFee(value){
+        document.getElementById("fee").innerHTML="Event Fee: " + value;
+    }
+    function confirmSubmit(){
+        alert("Feedback Submitted");
+    }
+    function enlargeImage(img){
+        img.style.width="400px";
+    }
+    function countChars(text){
+        document.getElementById("charCount").innerHTML="Characters: " + text.value.length;
+    }
+    function videoReady(){
+        document.getElementById("videoMessage").innerHTML="Video ready to play";
+    }
+    window.onbeforeunload=function(){
+        return "Your form is unfinished!";
+    }
+    function savePreference(){
+        let value = document.getElementById("eventType").value;
+        localStorage.setItem("preferredEvent", value);
+        alert("Preference Saved");
+    }
+    window.onload=function(){
+        let saved=localStorage.getItem("preferredEvent");
+        if(saved){
+            document.getElementById("eventType").value=
+            saved;
+        }
+    }
+    function clearPreferences(){
+        localStorage.clear();
+        sessionStorage.clear();
+        alert("Preferences Cleared");
+    }
+    function findLocation(){
+        navigator.geolocation.getCurrentPosition(
+            success,
+            error,
+            {
+                enableHighAccuracy:true,
+            timeout:5000           
+            }
+        );
+    }
+    function success(position){
+        document.getElementById("location").innerHTML=
+        "Latitude: " +
+        position.coords.latitude+
+        "<br>Longitude: " +
+        position.coords.longitude;
+    }
+    function error(){
+        alert("Permission Denied or Timeout");
+    }
+    console.log("Portal Loaded");
+ </script>
+</body>
+</html>
+        
